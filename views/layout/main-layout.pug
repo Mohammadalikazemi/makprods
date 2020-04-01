@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{pageTitle}
+        if !editing
+            link(rel="stylesheet", href="../css/style.css")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Spicy+Rice&display=swap") 
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Concert+One&display=swap") 
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Hammersmith+One&display=swap") 
+        block styles
+    body   
+        header
+                nav
+                    ul
+                        li
+                            a(href='/',class=(path==='/' ? "active":'')) shop
+                        li
+                            a(href='/products',class=(path==='/products' ? "active":'')) Products
+                        li
+                            a(href='/cart',class=(path==='/cart' ? "active":'')) Cart
+                        li
+                            a(href='/orders',class=(path==='/orders' ? "active":'')) Orders
+                        li
+                            a(href='/admin/add-product',class=(path==='/admin/add-product' ? "active":'')) Add Product
+                        li
+                            a(href='/admin/products',class=(path==='/admin/products' ? "active":'')) Admin Product
+        main 
+            block content

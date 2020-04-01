@@ -1,0 +1,14 @@
+extends ../layout/main-layout.pug
+
+block content   
+    .prod_details
+        .title Title : #{product.title}
+        .image
+            img(src=product.imageUrl, alt=product.title)
+        .body
+            .price Price : #{product.price} $
+            .txt Description : #{product.descriptions}
+            form(action="/cart", method="post")
+                .btn
+                    button.btn_Green(type="submit") Add to Cart
+                input(type="hidden",name="productId",value=product.id)

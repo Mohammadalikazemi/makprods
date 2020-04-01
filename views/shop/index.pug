@@ -1,0 +1,19 @@
+extends ../layout/main-layout.pug
+
+block content
+    .products
+        if prods.length > 0
+            each product in prods
+                .gift
+                    .title #{product.title}
+                    .image
+                        img(src=product.imageUrl, alt="books")
+                    .footer 
+                        .price #{product.price} $
+                        .txt #{product.descriptions}
+                        .btn
+                            form(action="/cart", method="post")
+                                button.btn_Green(type="submit") Add to Cart
+                                input(type="hidden",name="productId",value=product.id)
+        else
+            h1 No Product

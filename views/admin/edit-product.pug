@@ -1,0 +1,38 @@
+extends ../layout/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="../../css/style.css")
+
+
+block content
+    if editing 
+        form(action='/admin/edit-product' method="POST")
+            .form-control
+                label(for="name" style="width: 100%;text-align: left;margin-bottom: 5px;") Title : 
+                input(type="text" name='title' id='name' placeholder="title name",value=product.title) 
+            .form-control
+                label(for="imageUrl" style="width: 100%;text-align: left;margin-bottom: 5px;") Image : 
+                input(type="text" name='imageUrl' id='imageUrl' placeholder="Image Url",value=product.imageUrl) 
+            .form-control
+                label(for="price" style="width: 100%;text-align: left;margin-bottom: 5px;") price : 
+                input(type="text" name='price' id='price' placeholder="price",value=product.price) 
+            .form-control
+                label(for="descriptions" style="width: 100%;text-align: left;margin-bottom: 5px;") descriptions : 
+                textarea(name="descriptions",id='descriptions', cols="30", rows="5",placeholder="descriptions") #{product.descriptions}
+            input(type="hidden", value=product.id, name='productId')
+            button(class="btn_Purple" type="submit") Update Product 
+    else
+        form(action='/admin/add-product' method="POST")
+            .form-control
+                label(for="name" style="width: 100%;text-align: left;margin-bottom: 5px;") Title : 
+                input(type="text" name='title' id='name' placeholder="title name") 
+            .form-control
+                label(for="imageUrl" style="width: 100%;text-align: left;margin-bottom: 5px;") Image : 
+                input(type="text" name='imageUrl' id='imageUrl' placeholder="Image Url") 
+            .form-control
+                label(for="price" style="width: 100%;text-align: left;margin-bottom: 5px;") price : 
+                input(type="text" name='price' id='price' placeholder="price") 
+            .form-control
+                label(for="descriptions" style="width: 100%;text-align: left;margin-bottom: 5px;") descriptions : 
+                textarea(name="descriptions",id='descriptions', cols="30", rows="5",placeholder="descriptions")
+            button(class="btn_Purple" type="submit") Add Product 

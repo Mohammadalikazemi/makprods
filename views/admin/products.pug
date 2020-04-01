@@ -1,0 +1,20 @@
+extends ../layout/main-layout.pug
+
+block content
+    .products
+        if prods.length > 0
+            each product in prods
+                .gift
+                    .title #{product.title}
+                    .image
+                        img(src=product.imageUrl, alt="books")
+                    .footer 
+                        .price #{product.price} $
+                        .txt #{product.descriptions}
+                        .btn
+                            a.btn_Green(href='/admin/edit-product/'+product.id+'?edit=true') Edit
+                            form(action="/admin/delete-product",method="POST")
+                                input(type="hidden" value=product.id name="productId") 
+                                button.btn_danger(type="submit") Delete
+        else
+            h1 No Product
